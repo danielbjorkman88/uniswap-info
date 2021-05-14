@@ -14,6 +14,47 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { gql } from '@apollo/client';
 
 
+
+const client = new ApolloClient({
+  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  cache: new InMemoryCache()
+});
+
+client
+  .query({
+    query: gql`
+      query GetRates {
+        rates(currency: "USD") {
+          currency
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
+
+  import React from 'react';
+  import { render } from 'react-dom';
+  import { ApolloProvider } from '@apollo/client/react';
+  
+  const client = new ApolloClient({ uri, cache });
+  
+  function App() {
+    return (
+      <div>
+        <h2>My first Apollo app 🚀</h2>
+      </div>
+    );
+  }
+  
+  render(
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>,
+    document.getElementById('root'),
+  );
+  
+
+
 // initialize GA
 const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 
@@ -75,23 +116,3 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-
-
-const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
-  cache: new InMemoryCache()
-});
-
-
-
-client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
