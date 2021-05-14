@@ -14,6 +14,7 @@ const EXCHANGE_RATES = gql`
   }
 `;
 
+
 function ExchangeRates() {
   const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
