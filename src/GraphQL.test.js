@@ -41,5 +41,6 @@ it('GQL queries', () => {
 
   var mypairs = queries.ALL_PAIRS
   var rates = EXCHANGE_RATES
-
+  var owen = client.owenClient
+  
 });
