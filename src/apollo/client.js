@@ -40,3 +40,10 @@ export const blockClient = new ApolloClient({
   }),
   cache: new InMemoryCache(),
 })
+
+export const owenClient = new ApolloClient({
+  link: new HttpLink({
+    uri: 'https://chainvault.io/node/api/market/pool/backtest/uniswap/',
+  }),
+  cache: new InMemoryCache(),
+})
