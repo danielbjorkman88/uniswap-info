@@ -5,15 +5,6 @@ import * as queries from './apollo/queries';
 
 import { useQuery, gql } from '@apollo/client';
 
-const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
-
 
 function ExchangeRates() {
   const { loading, error, data } = useQuery(EXCHANGE_RATES);
@@ -38,9 +29,8 @@ it('GQL queries', () => {
     json: () => Promise.resolve({'user': 'test'})
   }));
 
-
   var mypairs = queries.ALL_PAIRS
   var rates = EXCHANGE_RATES
   var owen = client.owenClient
-  
+
 });
