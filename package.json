@@ -74,6 +74,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test_qgl": "react-scripts test /src/GraphQL.test.js",
     "eject": "react-scripts eject"
   },
   "browserslist": {
