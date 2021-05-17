@@ -19,7 +19,7 @@ function getLiquidityPositions(address) {
     return result
 }
 
-const getLiqPos = async (address) => {
+/*const getLiqPos = async (address) => {
     let data = {}
 
     try {
@@ -31,7 +31,7 @@ const getLiqPos = async (address) => {
         console.log(e)
     }
     return data
-}
+}*/
 
 export const UNI_LIQ_POS1 = (address) => {
     gql`

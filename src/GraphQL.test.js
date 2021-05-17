@@ -75,17 +75,10 @@ const UNI_LIQ_POS3 = gql`
         `
 
 it('GQL queries', () => {
-  global.fetch = jest.fn().mockReturnValue(Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({'user': 'test'})
-  }));
 
   var mypairs = queries.ALL_PAIRS
-  var rates = EXCHANGE_RATES
   var owen = clients.owenClient
-
   var query = queries.ALL_PAIRS
-
 
   var uniswap_liq = UNI_LIQ_POS2
   //var data = getLiquidityPositions("0x1f9840a85d5af5bf1d1762f925bdaddc4201f984");
@@ -94,8 +87,8 @@ it('GQL queries', () => {
 
   //const data = await Promise.resolve({});
 
-  console.log("Test log:")
-  console.log(data)
-  data.then()
+  //console.log("Test log:")
+  //console.log(data)
+  //data.then()
 
 });
