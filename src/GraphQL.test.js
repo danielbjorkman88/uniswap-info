@@ -19,24 +19,18 @@ async function getLiquidityPositions(address, query_request ,blockNumber) {
   return result?.data?.user?.liquidityPositions?.[0]?.pair?.token0?.symbol + result?.data?.user?.liquidityPositions?.[0]?.pair?.token1?.symbol;
 }
 
+async function my_getter(address, query_request ,blockNumber) {
+  let result = await clients.client.query({
+      query: query_request,
+      variables: {
+          address: address,
+          blockNumber: blockNumber,
+      },
+      fetchPolicy: "no-cache", 
+  });
+  return result?.data ;
+}
 
-const UNI_LIQ_POS2 = gql`
-        query client {
-            user(id: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"){
-                liquidityPositions {
-                    pair {
-                        createdAtBlockNumber
-                        token0{
-                            symbol
-                        }
-                        token1{
-                            symbol
-                        }
-                    }
-                }
-            }
-        }
-    `
 
 
 const UNI_LIQ_POS = gql`
@@ -58,6 +52,18 @@ const UNI_LIQ_POS = gql`
     }
 `
 
+
+const my_qgl = gql`
+query {
+  pairs {
+    token0{
+      symbol
+    }
+    
+  }
+}
+`
+
 const UNI_LIQ_POS3 = gql`
         query client {
             user(id: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"){
@@ -69,12 +75,12 @@ const UNI_LIQ_POS3 = gql`
 it('GQL queries', async () => {
 
   var adress_uniswap = "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+  var adress2 = "0x000ea4a83acefdd62b1b43e9ccc281f442651520"
 
   var mypairs = queries.ALL_PAIRS
   var owen = clients.owenClient
   var query = queries.ALL_PAIRS
 
-  var uniswap_liq = UNI_LIQ_POS2
 
   var query_request = UNI_LIQ_POS
   var block = 10900000
@@ -84,8 +90,8 @@ it('GQL queries', async () => {
 
   console.log("Test 2:")
 
-  
-  const data2 = await getLiquidityPositions(adress_uniswap, query_request, block)
+  var query_request = my_qgl
+  const data2 = await my_getter(adress_uniswap, query_request, block)
   console.log(data2)
 
 
