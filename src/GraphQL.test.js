@@ -95,16 +95,10 @@ it('GQL queries', () => {
 
   //const data = await Promise.resolve({});
 
-<<<<<<< HEAD
-  //console.log("Test log:")
-  //console.log(data)
-  //data.then()
-=======
   console.log("Test log:")
   console.log(data1)
   console.log(data2)
   data1.then()
   data2.then()
->>>>>>> 3c7c5ca646bffdb0c86bd62da7214c79b2b24b35
 
 });
