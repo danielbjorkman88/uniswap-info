@@ -30,11 +30,11 @@ function ExchangeRates() {
   ));
 }
 
-Promise.resolve('Success').then(function(value) {
-  console.log(value); // "Success"
-}, function getLiquidityPositions(address) {
-  const result = clients.client
-      .query({query: UNI_LIQ_POS3
+Promise.resolve('Success').then(function( address) {
+  console.log(address); // "Success"
+}, function getLiquidityPositions( address) {
+  const result = clients.owenClient
+      .query({query: queries.ALL_PAIRS
       })
       .then((response) => {
       console.log(response.data)
@@ -83,11 +83,14 @@ const UNI_LIQ_POS3 = gql`
         }
         `
 
+
+
+
 it('GQL queries', () => {
-  global.fetch = jest.fn().mockReturnValue(Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({'user': 'test'})
-  }));
+  ///global.fetch = jest.fn().mockReturnValue(Promise.resolve({
+///    ok: true,
+ ///   json: () => Promise.resolve({'user': 'test'})
+///  }));
 
 
   var mypairs = queries.ALL_PAIRS
@@ -98,14 +101,16 @@ it('GQL queries', () => {
 
 
   var uniswap_liq = UNI_LIQ_POS2
-  //var data = getLiquidityPositions("0x1f9840a85d5af5bf1d1762f925bdaddc4201f984");
-  var data = Promise.resolve("0x1f9840a85d5af5bf1d1762f925bdaddc4201f984")
+  var data1 = getLiquidityPositions( "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984");
+  var data2 = Promise.resolve( "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984")
 
   
   //const data = await Promise.resolve({});
 
   console.log("Test log:")
-  console.log(data)
-  data.then()
+  console.log(data1)
+  console.log(data2)
+  data1.then()
+  data2.then()
 
 });
