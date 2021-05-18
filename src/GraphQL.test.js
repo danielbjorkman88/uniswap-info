@@ -84,15 +84,15 @@ it('GQL queries', async () => {
 
   var query_request = UNI_LIQ_POS
   var block = 10900000
-  const data = await getLiquidityPositions(adress_uniswap, query_request, block)
+  var data = await getLiquidityPositions(adress_uniswap, query_request, block)
   console.log(data)                         
   expect(data).toBe('SAKEUSDT');
 
   console.log("Test 2:")
 
   var query_request = my_qgl
-  const data2 = await my_getter(adress_uniswap, query_request, block)
-  console.log(data2)
+  var data = await my_getter(adress_uniswap, query_request, block)
+  console.log(data)
 
 
 
